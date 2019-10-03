@@ -1,14 +1,15 @@
-package encryptdecrypt.Application.Product.Rule;
+package encryptdecrypt.Application.Product.Rules;
 
-public abstract class Rule {
-    private String name;
+public class JumpRule {
     private int[] jumpFrom;
     private int[] jumpTo;
 
 
-    public Rule(String name, int[] jumpFrom, int[] jumpTo){
-        this.name = name;
+    public JumpRule(int[] jumpFrom, int[] jumpTo){
+        this.addArrays(jumpFrom, jumpTo);
+    }
 
+    private void addArrays(int[] jumpFrom, int[] jumpTo){
         if(jumpArrayIsValid(jumpFrom, jumpTo)){
             this.jumpFrom = jumpFrom;
             this.jumpTo = jumpTo;
@@ -31,29 +32,5 @@ public abstract class Rule {
             }
         }
         return -1;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int[] getJumpFrom() {
-        return jumpFrom;
-    }
-
-    public void setJumpFrom(int[] jumpFrom) {
-        this.jumpFrom = jumpFrom;
-    }
-
-    public int[] getJumpTo() {
-        return jumpTo;
-    }
-
-    public void setJumpTo(int[] jumpTo) {
-        this.jumpTo = jumpTo;
     }
 }

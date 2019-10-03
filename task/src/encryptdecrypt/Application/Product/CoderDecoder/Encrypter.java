@@ -1,6 +1,6 @@
 package encryptdecrypt.Application.Product.CoderDecoder;
 
-import encryptdecrypt.Application.Product.Rule.Rule;
+import encryptdecrypt.Application.Product.Rules.JumpRule;
 import encryptdecrypt.Application.Product.ShiftType;
 
 public class Encrypter extends CoderDecoder {
@@ -8,14 +8,14 @@ public class Encrypter extends CoderDecoder {
         char[] unencryptedArray = encryptable.toCharArray();
         char[] encryptedArray = new char[unencryptedArray.length];
 
-        if (rule != null){
+        if (jumpRule != null){
             for (int i = 0; i < unencryptedArray.length; i++) {
-                encryptedArray[i] = this.shiftedNonLetter(unencryptedArray[i],
-                        key, rule);
+                encryptedArray[i] = this.shiftCharacter(unencryptedArray[i],
+                        key, jumpRule);
             }
         } else {
             for (int i = 0; i < unencryptedArray.length; i++){
-                encryptedArray[i] = this.shiftedNonLetter(unencryptedArray[i],
+                encryptedArray[i] = this.shiftCharacter(unencryptedArray[i],
                         key);
             }
         }
@@ -23,11 +23,9 @@ public class Encrypter extends CoderDecoder {
         return String.valueOf(encryptedArray);
     }
 
-    private char shiftedNonLetter(char shiftableChar, int key, Rule rule){
-        //System.out.println("char " + shiftableChar + " with unic " + (int)
-        // shiftableChar);
+    private char shiftCharacter(char shiftableChar, int key, JumpRule jumpRule){
        for (int i = 0; i < key; i++){
-           int isJumpCase = rule.enforceRule(shiftableChar);
+           int isJumpCase = jumpRule.enforceRule(shiftableChar);
 
            if (isJumpCase == -1){
                shiftableChar++;
@@ -39,7 +37,7 @@ public class Encrypter extends CoderDecoder {
        return shiftableChar;
     }
 
-    private char shiftedNonLetter(char shiftableChar, int key){
+    private char shiftCharacter(char shiftableChar, int key){
         return ShiftType.unicodeArray[shiftableChar + key];
     }
 }

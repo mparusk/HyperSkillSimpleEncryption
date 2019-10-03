@@ -2,14 +2,14 @@ package encryptdecrypt.Application.Client;
 
 import java.util.Arrays;
 
-public class Utils {
-    String[] args;
+public class ArgsUtils {
+    private String[] args;
 
-    Utils(String[] args){
+    ArgsUtils(String[] args){
         this.args = args;
     }
 
-    boolean checkIfValidArgument(){
+    boolean checkIfValidArguments(){
         if (!(args.length % 2 == 0)){
             System.out.println("Error: invalid arguments");
             System.exit(1);

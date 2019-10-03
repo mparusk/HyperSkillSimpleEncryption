@@ -17,14 +17,14 @@ class EncryptionExcercise {
     private String mode = "enc";
     private String data = "";
     private String algorithm = "shift";
-    private String fileOut = "";
+    private String fileOutName = "";
 
     //Other
-    private Utils utils;
+    private ArgsUtils argsUtils;
     private Extracter extracter;
 
     EncryptionExcercise(String[] args){
-        utils = new Utils(args);
+        argsUtils = new ArgsUtils(args);
         extracter = new Extracter(args);
         this.flow();
     }
@@ -33,7 +33,7 @@ class EncryptionExcercise {
         Factory factory;
 
         //Checker
-        utils.checkIfValidArgument();
+        argsUtils.checkIfValidArguments();
 
         //Incoming data extracter
         extracter.extract();
@@ -78,7 +78,7 @@ class EncryptionExcercise {
                     if(data.equals("")){ data = readFile(args[i+1]); }
 
                 } else if (args[i].equals("-out")) {
-                    fileOut = args[i + 1];
+                    fileOutName = args[i + 1];
 
                 } else if (args[i].equals("-alg")){
                     algorithm = args[i + 1];
@@ -86,9 +86,9 @@ class EncryptionExcercise {
             }
         }
 
-        private String readFile(String fileIn){
+        private String readFile(String fileInName){
             try {
-                Scanner scanner = new Scanner(new File(fileIn));
+                Scanner scanner = new Scanner(new File(fileInName));
                 return scanner.nextLine();
             } catch (FileNotFoundException e){
                 System.out.println("Error: file non-existent");
@@ -98,21 +98,22 @@ class EncryptionExcercise {
         }
     }
 
+    //To handle writing the result to a file
     private class Outputter{
-        String result;
+        private String toOutput;
 
         private Outputter(String result) {
-            this.result = result;
+            this.toOutput = result;
         }
 
         private void output(){
-            if (fileOut.equals("")){
-                System.out.println(result);
+            if (fileOutName.equals("")){
+                System.out.println(toOutput);
             } else {
 
                 try {
-                    FileWriter fileWriter = new FileWriter(fileOut);
-                    fileWriter.write(result);
+                    FileWriter fileWriter = new FileWriter(fileOutName);
+                    fileWriter.write(toOutput);
                     fileWriter.close();
                 } catch (IOException e){
                     System.out.println("Error: problem writing to file");

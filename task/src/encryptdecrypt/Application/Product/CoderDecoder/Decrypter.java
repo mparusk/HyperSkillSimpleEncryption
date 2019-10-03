@@ -1,6 +1,6 @@
 package encryptdecrypt.Application.Product.CoderDecoder;
 
-import encryptdecrypt.Application.Product.Rule.Rule;
+import encryptdecrypt.Application.Product.Rules.JumpRule;
 import encryptdecrypt.Application.Product.ShiftType;
 
 public class Decrypter extends CoderDecoder {
@@ -8,24 +8,24 @@ public class Decrypter extends CoderDecoder {
         char[] encryptedArray = decryptable.toCharArray();
         char[] unencryptedArray = new char[encryptedArray.length];
 
-        if (rule != null){
+        if (jumpRule != null){
             for (int i = 0; i < encryptedArray.length; i++) {
-                unencryptedArray[i] = this.shiftedNonLetter(encryptedArray[i],
-                        key, rule);
+                unencryptedArray[i] = this.shiftCharacter(encryptedArray[i],
+                        key, jumpRule);
             }
         } else {
             for (int i = 0; i < encryptedArray.length; i++){
-                unencryptedArray[i] = this.shiftedNonLetter(encryptedArray[i], key);
+                unencryptedArray[i] = this.shiftCharacter(encryptedArray[i], key);
             }
         }
 
         return String.valueOf(unencryptedArray);
     }
 
-    private char shiftedNonLetter(char shiftableChar, int key, Rule rule){
+    private char shiftCharacter(char shiftableChar, int key, JumpRule jumpRule){
         System.out.println("char " + shiftableChar + " with unic " + (int) shiftableChar);
         for (int i = 0; i < key; i++){
-            int isJumpCase = rule.enforceRule(shiftableChar);
+            int isJumpCase = jumpRule.enforceRule(shiftableChar);
 
             if (isJumpCase == -1){
                 shiftableChar--;
@@ -38,7 +38,7 @@ public class Decrypter extends CoderDecoder {
 
     }
 
-    private char shiftedNonLetter(char shiftableChar, int key){
+    private char shiftCharacter(char shiftableChar, int key){
         return ShiftType.unicodeArray[shiftableChar - key];
     }
 }

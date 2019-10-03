@@ -5,19 +5,14 @@ import encryptdecrypt.Application.Product.CoderDecoder.Decrypter;
 import encryptdecrypt.Application.Product.CoderDecoder.Encrypter;
 
 public class UnicodeShift extends ShiftType {
-    private int key;
-    private String encryptable;
-    private String mode;
-    private CoderDecoder coderDecoder;
-
 
     public UnicodeShift(int key, String encryptable, String mode) {
-        this.key = key;
-        this.encryptable = encryptable;
-        this.mode = mode;
+       super(key, encryptable, mode);
     }
 
     public String shift(){
+        CoderDecoder coderDecoder;
+
         if (mode.equals("enc")){
             coderDecoder = new Encrypter();
         } else {
