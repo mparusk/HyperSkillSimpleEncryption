@@ -35,7 +35,6 @@ public class Decrypter extends CoderDecoder {
         }
 
         return shiftableChar;
-
     }
 
     private char shiftCharacter(char shiftableChar, int key){

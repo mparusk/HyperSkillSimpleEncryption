@@ -28,7 +28,7 @@ public class JumpRule {
             if (character == jumpFrom[i]){
                 System.out.println(character + " " + jumpFrom[i] + " match");
                 System.out.println("returning " + jumpTo[i] + " " + (char) jumpTo[i]);
-                return (int) jumpTo[i];
+                return jumpTo[i];
             }
         }
         return -1;

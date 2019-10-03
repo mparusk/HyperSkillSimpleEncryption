@@ -2,22 +2,21 @@ package encryptdecrypt.Application.Client;
 
 import java.util.Arrays;
 
-public class ArgsUtils {
+class ArgsUtils {
     private String[] args;
 
     ArgsUtils(String[] args){
         this.args = args;
     }
 
-    boolean checkIfValidArguments(){
+    void checkIfValidArguments(){
         if (!(args.length % 2 == 0)){
             System.out.println("Error: invalid arguments");
             System.exit(1);
         }
 
-        int counter = 0;
         String[] arrOfInvalidArgs = new String[]{"-mode", "-key", "-data",
-                "-in", "-out"};
+                "-in", "-alg", "-out"};
 
         for (int i = 0; i < args.length; i += 2){
             String tester = null;
@@ -33,7 +32,5 @@ public class ArgsUtils {
                 System.exit(1);
             }
         }
-
-        return true;
     }
 }
