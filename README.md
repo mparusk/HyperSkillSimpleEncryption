@@ -30,7 +30,7 @@ When completed, the project should be able to obtain and process command line
 We were told 
 
 This is the final result, as visualised by an UML class diagram:
-![Encryption-decryption diagram](Class Diagram EncryptionClassDiagram.png)
+![Encryption-decryption diagram](./Class Diagram EncryptionClassDiagram.png)
 
 
 ##What I learned?
