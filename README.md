@@ -1,6 +1,6 @@
-#HyperSkill Encryption project
-##tl;dr
-##What is it?
+# HyperSkill Encryption project
+## tl;dr
+## What is it?
 The project in this repository is a part of a course I took on 
 [hyperskill.org](https://hi.hyperskill.org). HyperSkill is a website that 
 offers free courses to learn programming languages, technologies, and Computer 
@@ -26,14 +26,14 @@ When completed, the project should be able to obtain and process command line
 (incuding the ncryption type, the key, the encryptable string) and to 
  convert the input based on it.
    
-##How did I structure it?
+## How did I structure it?
 We were told 
 
 This is the final result, as visualised by an UML class diagram:
-![Encryption-decryption diagram](./Class Diagram EncryptionClassDiagram.png)
+![Encryption-decryption diagram](./EncryptionClassDiagram.png)
 
 
-##What I learned?
+## What I learned?
 Although most of the topics in this course were familiar to me, there were 
 some areas of Java, I had picked up on the go when necessary, but never spent
  time explicitly learning them. These topics include:
