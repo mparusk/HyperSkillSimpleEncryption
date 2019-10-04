@@ -4,6 +4,11 @@ import encryptdecrypt.Application.Product.Rules.JumpRule;
 import encryptdecrypt.Application.Product.ShiftType;
 
 public class Decrypter extends CoderDecoder {
+
+    public Decrypter(char[] scale){
+        super(scale);
+    }
+
     public String transform(String decryptable, int key){
         char[] encryptedArray = decryptable.toCharArray();
         char[] unencryptedArray = new char[encryptedArray.length];
@@ -23,12 +28,11 @@ public class Decrypter extends CoderDecoder {
     }
 
     private char shiftCharacter(char shiftableChar, int key, JumpRule jumpRule){
-        System.out.println("char " + shiftableChar + " with unic " + (int) shiftableChar);
         for (int i = 0; i < key; i++){
             int isJumpCase = jumpRule.enforceRule(shiftableChar);
 
             if (isJumpCase == -1){
-                shiftableChar--;
+                shiftableChar = scale[shiftableChar-1];
             } else {
                 shiftableChar = (char) isJumpCase;
             }

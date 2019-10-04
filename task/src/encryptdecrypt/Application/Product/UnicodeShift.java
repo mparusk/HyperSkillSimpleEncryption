@@ -14,13 +14,11 @@ public class UnicodeShift extends ShiftType {
         CoderDecoder coderDecoder;
 
         if (mode.equals("enc")){
-            coderDecoder = new Encrypter();
+            coderDecoder = new Encrypter(unicodeArray);
         } else {
-            coderDecoder = new Decrypter();
+            coderDecoder = new Decrypter(unicodeArray);
         }
 
         return coderDecoder.transform(encryptable, key);
     }
-
-
 }

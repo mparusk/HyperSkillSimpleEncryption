@@ -17,9 +17,9 @@ public class AlphabetShift extends ShiftType {
         this.createRule();
 
         if (mode.equals("enc")){
-            coderDecoder = new Encrypter();
+            coderDecoder = new Encrypter(unicodeArray);
         } else {
-            coderDecoder = new Decrypter();
+            coderDecoder = new Decrypter(unicodeArray);
         }
 
         coderDecoder.setJumpRule(jumpRule);
