@@ -1,6 +1,6 @@
 package encryptdecrypt.Application.Product.Rules;
 
-public class JumpRule {
+public class JumpRule implements Rule{
     private int[] jumpFrom;
     private int[] jumpTo;
 
